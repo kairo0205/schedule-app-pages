@@ -5,21 +5,22 @@
 <p>사용자가 설정 › 구글 캘린더에서 연결했을 때만, 다음 권한(범위)으로 구글 캘린더에 접근합니다.</p>
 <ul><li><code>calendar.calendarlist.readonly</code>: 캘린더 목록(이름)을 읽어, 가져올 캘린더를 고를 수 있게 합니다.</li>
 <li><code>calendar.events.readonly</code>: 사용자가 고른 캘린더의 일정(오늘 기준 약 35일 전 ~ 100일 뒤)을 읽어 앱에 보여 줍니다.</li>
-<li><code>calendar.app.created</code>: 앱이 만든 「스케줄 앱」 캘린더에만 일정을 쓰고 고칩니다. 다른 캘린더에는 쓰지 않습니다.</li></ul>
+<li><code>calendar.app.created</code>: 앱이 직접 만든 캘린더에만 쓰고 고칩니다. 다른 캘린더에는 쓰지 않습니다.<ul><li>「Schedule App」: 앱의 할 일·일정을 보내는 캘린더</li><li>「Schedule App Data」: 「동기화」(두 PC 동기화)를 켰을 때만 만들며, 앱 데이터(할 일, 프로젝트, 기록, 설정 등)를 사용자 본인 구글 계정에 보관해 사용자의 다른 PC와 맞춥니다.</li></ul></li></ul>
 <h2>2. 저장 위치</h2>
-<ul><li>읽은 일정은 사용자 PC의 앱 데이터 파일(로컬 데이터베이스)에만 저장합니다.</li>
+<ul><li>앱 데이터와 읽은 일정은 사용자 PC의 앱 데이터 파일(로컬 데이터베이스)에 저장합니다. 「동기화」(두 PC 동기화)를 켠 경우에만 사용자 본인 구글 계정의 「Schedule App Data」 캘린더에도 저장됩니다.</li>
 <li>로그인 정보(refresh token)는 Windows 자격 증명 관리자에 저장하며, 데이터 파일이나 백업에는 넣지 않습니다.</li>
 <li>개발자나 다른 서버로 보내지 않습니다. 광고, 분석, 판매, AI 학습에 쓰지 않습니다.</li></ul>
 <h2>3. 공유</h2><p>누구와도 공유하지 않습니다. 구글 API와 주고받는 통신만 있습니다.</p>
 <h2>4. 지우는 방법</h2>
 <ul><li>앱 설정 › 구글 캘린더 › 연결 끊기: 로그인 정보를 지우고 구글에 권한 취소를 요청합니다.</li>
 <li>구글 계정의 <a href="https://myaccount.google.com/permissions">서드 파티 액세스</a>에서도 언제든 권한을 취소할 수 있습니다.</li>
-<li>앱 데이터 파일(%APPDATA%\com.kairo.schedule)을 지우면 가져온 일정도 모두 지워집니다.</li></ul>
+<li>앱 데이터 파일(%APPDATA%\com.kairo.schedule)을 지우면 PC에 있는 데이터가 모두 지워집니다.</li>
+<li>구글 캘린더에서 「Schedule App」, 「Schedule App Data」 캘린더를 지우면 구글 쪽에 보낸 것도 모두 지워집니다.</li></ul>
 <h2>5. Google API 서비스 사용자 데이터 정책</h2>
 <p>이 앱이 구글 API에서 받은 정보를 사용하고 다른 앱으로 옮기는 방식은 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>(제한적 사용 요건 포함)를 따릅니다.</p>
 <h2>English</h2>
-<p>Only after the user connects Google Calendar in Settings, the app uses: <code>calendar.calendarlist.readonly</code> (list calendar names so the user can choose), <code>calendar.events.readonly</code> (read events from the chosen calendars, about 35 days back to 100 days ahead, shown in the app read-only), and <code>calendar.app.created</code> (create and update events only in the calendar the app itself creates). Event data is stored only in the local database on the user's PC; the login token is kept in Windows Credential Manager. No data is sent to the developer or any other server, and none is shared, sold, used for ads, analytics or AI training. To delete: Settings › Google Calendar › Disconnect (removes the token and asks Google to revoke it), or revoke at <a href="https://myaccount.google.com/permissions">Google Account › Third-party access</a>, or delete the app data folder. The app's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+<p>Only after the user connects Google Calendar in Settings, the app uses: <code>calendar.calendarlist.readonly</code> (list calendar names so the user can choose), <code>calendar.events.readonly</code> (read events from the chosen calendars, about 35 days back to 100 days ahead, shown in the app read-only), and <code>calendar.app.created</code> (write only to calendars the app itself creates: "Schedule App" for the user's tasks, and, only when the user turns on two-PC sync, "Schedule App Data", which keeps the app data in the user's own Google account to match it between the user's PCs). Data is stored in the local database on the user's PC, and in the user's own Google Calendar only as described above; the login token is kept in Windows Credential Manager. No data is sent to the developer or any other server, and none is shared, sold, used for ads, analytics or AI training. To delete: Settings › Google Calendar › Disconnect (removes the token and asks Google to revoke it), or revoke at <a href="https://myaccount.google.com/permissions">Google Account › Third-party access</a>, or delete the app data folder and the "Schedule App" / "Schedule App Data" calendars in Google Calendar. The app's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
 <h2>日本語</h2>
-<p>設定で Google カレンダーに接続したときだけ、上記の範囲でカレンダーにアクセスします。読み込んだ予定は利用者の PC 内のデータベースにのみ保存し、開発者や他のサーバーには送信しません。設定の「接続を解除」または Google アカウントの「サードパーティ アクセス」からいつでも取り消せます。</p>
+<p>設定で Google カレンダーに接続したときだけ、上記の範囲でカレンダーにアクセスします。データは利用者の PC 内のデータベースに保存し、「同期」をオンにした場合のみ利用者自身の Google アカウントの「Schedule App Data」カレンダーにも保存します。開発者や他のサーバーには送信しません。設定の「接続を解除」または Google アカウントの「サードパーティ アクセス」からいつでも取り消せます。</p>
 <p class="lang">연락처 Contact: didtjs0205@gmail.com</p>
 </body></html>
